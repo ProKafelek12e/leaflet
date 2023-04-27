@@ -3,7 +3,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
-var marker = L.marker([52.186570236764446, 21.571465520662873]).addTo(map);
+var fmarker = L.marker([52.186570236764446, 21.571465520662873]).addTo(map);
 map.on('click', function (e) {
 
     console.log(e.latlng)
@@ -57,9 +57,7 @@ let r = 6371;
 // calculate the result
 console.log(c * r+"KM");
 
-L.polyline([[lat1,lon1],[lat2,lon2]]).addTo(map)
+L.polyline(fmarker.getLatlng(),marker.getLatlng()).addTo(map)
 }
-
-// Driver code   
 
 
