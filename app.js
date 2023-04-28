@@ -27,7 +27,7 @@ function mark(e){
     const lat = e.latlng.lat
     const lng = e.latlng.lng 
 
-    distance(52.186570236764446,lat,21.571465520662873,lng)
+    //distance(52.186570236764446,lat,21.571465520662873,lng)
 }
 function distance(lat1,
     lat2, lon1, lon2)
@@ -56,8 +56,6 @@ let r = 6371;
 
 // calculate the result
 console.log(c * r+"KM");
-
-L.polyline(fmarker.getLatlng(),marker.getLatlng()).addTo(map)
 }
 
 
