@@ -1,0 +1,31 @@
+#map{
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+body{
+    margin: 0px;
+    height: 100vh;
+    width: 100%;
+    background-color: aqua;
+}
+#menu{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 3;
+    
+    opacity: .85;
+    
+    background-color: beige;
+    width: 30%;
+    height: 40vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#menu button{
+    opacity: 1;
+}
