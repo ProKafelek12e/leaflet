@@ -7,26 +7,31 @@ function mapa(){
         var woj = woje.features[i]
         var mapwoje = L.geoJSON(woj,{color:"blue"}).addTo(map)
 
-        wojLayer[i].name= woje.features[i].properties.nazwa
-        console.log(wojLayer[i].nazwa)
-
+        
         //zmiana kolor na zielony przy najechaniu
         mapwoje.on("mouseover",(e)=>{
+            console.log(wojLayer[i].options)
             //console.log(wojLayer[i]._layers[e.layer._leaflet_id].feature.properties.nazwa)
-            wojLayer[i].setStyle({
-                color:"green",
-                weight:3,
-            })
+        if(wojLayer[i].options.color=="blue"){
+                wojLayer[i].setStyle({
+                    color:"green",
+                    weight:3,
+                })
+            }
         })
         //zmiana koloru na niebieski po wyjechaniu
         mapwoje.on("mouseout",(e)=>{
-            wojLayer[i].setStyle({
-                color:"blue",
-                
-            })
+            if(wojLayer[i].options.color =="blue"){
+                wojLayer[i].setStyle({
+                    color:"blue",
+                    
+                })
+            }
         })
         
+        mapwoje.name= woje.features[i].properties.nazwa
         wojLayer.push(mapwoje)
+        console.log(mapwoje)
     }
 }
 mapa()
@@ -58,8 +63,15 @@ function wylosuj() {
     if (wylosowaneWojewodztwo !== null) {
         document.getElementById("wojewodztwo").innerHTML = wylosowaneWojewodztwo
         for(let i=0;i<=wojLayer.length-1;i++){
-                if(wojLayer[i].name==wylosowaneWojewodztwo){ console.log("w")
+            if(wojLayer[i].licznik>0){
                 wojLayer[i].setStyle({color:"red"})
+                wojLayer[i].options.color = "red"
+            }
+
+            if(wojLayer[i].name==wylosowaneWojewodztwo){ console.log("w")
+                wojLayer[i].setStyle({color:"yellow"})
+                wojLayer[i].options.color = "yellow"
+                wojLayer[i].licznik = 1
             }
         }
 
