@@ -103,7 +103,7 @@ function check(){
         console.log(nieODP.length)
         if(PoprODP.length + bleODP.length + nieODP.length ==16){
             const div = document.createElement("div")
-            div.innerHTML = "Wygrałeś"
+            div.innerHTML = "Koniec gry"
             div.classList.add("win")
             div.id = "win"
             document.getElementById("body").appendChild(div)
