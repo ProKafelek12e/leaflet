@@ -1,6 +1,7 @@
 var map = L.map('map').setView([52.15088015338915, 18.979287672131708], 7);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom:7,maxZoom: 7,attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 var wojLayer = []
+var wojDoCheck = ""
 var e
 function mapa(){
     for(let i=0;i<=woje.features.length-1;i++){
@@ -10,11 +11,10 @@ function mapa(){
         
         //zmiana kolor na zielony przy najechaniu
         mapwoje.on("mouseover",(e)=>{
-            console.log(wojLayer[i].options)
             //console.log(wojLayer[i]._layers[e.layer._leaflet_id].feature.properties.nazwa)
         if(wojLayer[i].options.color=="blue"){
                 wojLayer[i].setStyle({
-                    color:"green",
+                    color:"gray",
                     weight:3,
                 })
             }
@@ -31,7 +31,6 @@ function mapa(){
         
         mapwoje.name= woje.features[i].properties.nazwa
         wojLayer.push(mapwoje)
-        console.log(mapwoje)
     }
 }
 mapa()
@@ -61,14 +60,13 @@ function losuj() {
 function wylosuj() {
     var wylosowaneWojewodztwo = losuj()
     if (wylosowaneWojewodztwo !== null) {
-        document.getElementById("wojewodztwo").innerHTML = wylosowaneWojewodztwo
+        wojDoCheck =  wylosowaneWojewodztwo
         for(let i=0;i<=wojLayer.length-1;i++){
-            if(wojLayer[i].licznik>0){
-                wojLayer[i].setStyle({color:"red"})
-                wojLayer[i].options.color = "red"
+            if(wojLayer[i].licznik==1&& wojLayer[i].options.color =="yellow"){
+                wojLayer[i].setStyle({color:"black"})
+                wojLayer[i].options.color = "black"
             }
-
-            if(wojLayer[i].name==wylosowaneWojewodztwo){ console.log("w")
+            if(wojLayer[i].name==wylosowaneWojewodztwo){
                 wojLayer[i].setStyle({color:"yellow"})
                 wojLayer[i].options.color = "yellow"
                 wojLayer[i].licznik = 1
@@ -78,8 +76,23 @@ function wylosuj() {
 
 
 
-
     } else {
-        document.getElementById("wojewodztwo").innerHTML = "Wszystkie województwa zostały już wylosowane."
     }
+}
+
+function check(){ 
+        for(let i=0;i<=wojLayer.length-1;i++){
+            console.log(wojLayer[i].name)
+            if(wojLayer[i].name == wojDoCheck){
+                
+            if(document.getElementById("wojewodztwoInp").value==wojDoCheck){
+                wojLayer[i].setStyle({color:"green"})
+                wojLayer[i].options.color = "green"
+            }
+            else{
+                wojLayer[i].setStyle({color:"red"})
+                wojLayer[i].options.color = "red"
+            }
+            }
+        }
 }
