@@ -56,6 +56,7 @@ function losuj() {
 
     return nazwaWojewodztwa
 }
+var nieODP = []
 
 function wylosuj() {
     var wylosowaneWojewodztwo = losuj()
@@ -65,6 +66,7 @@ function wylosuj() {
             if(wojLayer[i].licznik==1&& wojLayer[i].options.color =="yellow"){
                 wojLayer[i].setStyle({color:"black"})
                 wojLayer[i].options.color = "black"
+                nieODP.push(wojLayer[i].name)
             }
             if(wojLayer[i].name==wylosowaneWojewodztwo){
                 wojLayer[i].setStyle({color:"yellow"})
@@ -79,7 +81,8 @@ function wylosuj() {
     } else {
     }
 }
-
+var PoprODP = []
+var bleODP = []
 function check(){ 
         for(let i=0;i<=wojLayer.length-1;i++){
             console.log(wojLayer[i].name)
@@ -88,11 +91,49 @@ function check(){
             if(document.getElementById("wojewodztwoInp").value==wojDoCheck){
                 wojLayer[i].setStyle({color:"green"})
                 wojLayer[i].options.color = "green"
+                PoprODP.push(wojLayer[i].name)
             }
             else{
                 wojLayer[i].setStyle({color:"red"})
                 wojLayer[i].options.color = "red"
+                bleODP.push(wojLayer[i].name)
             }
             }
+        }
+        console.log(nieODP.length)
+        if(PoprODP.length + bleODP.length + nieODP.length ==16){
+            const div = document.createElement("div")
+            div.innerHTML = "Wygrałeś"
+            div.classList.add("win")
+            div.id = "win"
+            document.getElementById("body").appendChild(div)
+            console.log(bleODP,PoprODP,nieODP)
+
+
+            const ulp = document.createElement("ul")
+            for(let i=0;i<=PoprODP.length-1;i++){
+                console.log("p")
+                const lip = document.createElement("li")
+                lip.innerHTML = PoprODP[i]
+                ulp.appendChild(lip)
+            }
+            ulp.classList.add("ulp")
+            document.getElementById("win").appendChild(ulp)
+            const ulb = document.createElement("ul")
+            for(let i=0;i<=bleODP.length-1;i++){
+                const lib = document.createElement("li")
+                lib.innerHTML = bleODP[i]
+                ulb.appendChild(lib)
+            }
+            ulb.classList.add("ulb")
+            document.getElementById("win").appendChild(ulb)
+            const uln = document.createElement("ul")
+            for(let i=0;i<=nieODP.length-1;i++){
+                const lin = document.createElement("li")
+                lin.innerHTML = nieODP[i]
+                uln.appendChild(lin)
+            }
+            uln.classList.add("uln")
+            document.getElementById("win").appendChild(uln)
         }
 }
