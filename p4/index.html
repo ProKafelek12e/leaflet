@@ -9,12 +9,18 @@
     <title>Document</title>
 </head>
 <body id="body">
-    <div id="map"></div>
-    <div id="menu">
-        <button id="losuj" onclick="wylosuj()">losuj</button>
-        <input id="wojewodztwoInp" placeholder="Podaj wojewodztwo z mapy">
-        <button onclick="check()">check</button>
+    <div id="start">
+        <h1>Poland GEO-GUESS</h1>
+        <button onclick="start()" class="button">START GAME</button>
     </div>
+    <div id="map"></div>
+
+    <div id="menu">
+        <button id="losuj" onclick="wylosuj()" class="button">Losuj</button>
+        <input id="wojewodztwoInp" placeholder="Podaj wojewodztwo z mapy">
+        <button onclick="check()" class="button">Check</button>
+    </div>
+
     <script src="woj.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="

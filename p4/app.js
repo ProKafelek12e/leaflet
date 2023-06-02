@@ -1,8 +1,12 @@
-var map = L.map('map').setView([52.15088015338915, 18.979287672131708], 7);
+var map = L.map('map').setView([52.21959538181896, 23.08635048903569], 7);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom:7,maxZoom: 7,attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);
 var wojLayer = []
 var wojDoCheck = ""
-var e
+
+var PoprODP = []
+var bleODP = []
+var nieODP = []
+
 function mapa(){
     for(let i=0;i<=woje.features.length-1;i++){
         var woj = woje.features[i]
@@ -35,13 +39,9 @@ function mapa(){
 }
 mapa()
 
-
 var wojela = L.geoJson(woje.features).addTo(map);
 wojela.setStyle({color:"none"})
 var dostepneWojewodztwa = wojela.getLayers()
-
-
-
 
 function losuj() {
     if (dostepneWojewodztwa.length === 0) {
@@ -56,7 +56,6 @@ function losuj() {
 
     return nazwaWojewodztwa
 }
-var nieODP = []
 
 function wylosuj() {
     var wylosowaneWojewodztwo = losuj()
@@ -81,8 +80,7 @@ function wylosuj() {
     } else {
     }
 }
-var PoprODP = []
-var bleODP = []
+
 function check(){ 
         for(let i=0;i<=wojLayer.length-1;i++){
             console.log(wojLayer[i].name)
@@ -136,4 +134,8 @@ function check(){
             uln.classList.add("uln")
             document.getElementById("win").appendChild(uln)
         }
+}
+
+function start(){
+    document.getElementById("start").remove()
 }

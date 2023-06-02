@@ -3,23 +3,26 @@
     width: 100%;
     z-index: 1;
 }
+
+
+
 body{
     margin: 0px;
     height: 100vh;
     width: 100%;
-    background-color: aqua;
+    background-color: #14213D;
 }
 #menu{
     position: absolute;
-    left: 0px;
+    right: 0px;
     bottom: 0px;
     z-index: 3;
     
     opacity: .85;
     
-    background-color: beige;
-    width: 30%;
-    height: 40vh;
+    background-color: #14213d;
+    width: 40%;
+    height: 100vh;
 
     display: flex;
     justify-content: center;
@@ -27,8 +30,18 @@ body{
     flex-direction: column;
 
 }
+.button{
+    width: 200px;
+    padding: 6px;
+    border: 5px solid black;
+    background-color: #FCA311;
+    font-weight: bolder;
+}
 #menu input{
-    opacity: 2;
+    width: 178px;
+    padding: 6px;
+    border: 5px solid black;
+    background-color: #FCA311;
 }
 .win{
     background-color: black;
@@ -59,4 +72,25 @@ body{
 }
 .win ul{
 font-size: 25%;
+}
+#start{
+    width: 100%;
+    height: 100vh;
+    
+    background-color: #14213D;
+    
+    z-index: 10;
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#start h1{
+    border: 5px solid black;
+    background-color: #FCA311;
+    font-weight: bolder;
+    padding: 20px;
+    border-radius: 30px;
 }
